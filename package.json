@@ -4,14 +4,16 @@
   "scripts": {
     "ng": "ng",
     "photos:manifest": "node scripts/generate-photo-manifest.js",
-    "prestart": "npm run photos:manifest",
+    "prestart": "npm run photos",
     "start": "ng serve",
-    "prebuild": "npm run photos:manifest",
+    "prebuild": "npm run photos",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:ghpages": "npm run photos:manifest && ng build --base-href /HBDManvu/ && node scripts/prepare-ghpages.js",
-    "deploy": "npm run build:ghpages && gh-pages -d dist/manvi-birthday/browser --dotfiles"
+    "build:ghpages": "npm run photos && ng build --base-href /HBDManvu/ && node scripts/prepare-ghpages.js",
+    "deploy": "npm run build:ghpages && gh-pages -d dist/manvi-birthday/browser --dotfiles",
+    "photos:optimize": "node scripts/optimize-photos.js",
+    "photos": "npm run photos:optimize && npm run photos:manifest"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +43,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "sharp": "^0.35.4",
     "typescript": "~5.3.2"
   }
 }

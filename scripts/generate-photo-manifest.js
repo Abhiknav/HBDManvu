@@ -13,7 +13,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const ASSETS = path.join(__dirname, '..', 'src', 'assets');
+/**
+ * Scans the web-sized copies, not the originals — those are what actually
+ * get served (see optimize-photos.js and the assets entry in
+ * angular.json), and they are all .jpg regardless of the source format.
+ */
+const ASSETS = path.join(__dirname, '..', 'src', 'assets-web');
 const OUT_FILE = path.join(__dirname, '..', 'src', 'app', 'core', 'photo-manifest.generated.ts');
 const IMAGE_RE = /\.(jpe?g|png|webp|gif|avif)$/i;
 /** formats browsers cannot display — worth shouting about rather than skipping quietly */

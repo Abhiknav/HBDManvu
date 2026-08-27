@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# web-sized photo copies, regenerated from src/assets on every build
+/src/assets-web
