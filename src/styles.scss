@@ -1,1 +1,124 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* page backgrounds — warm and bright, but with real color and a hint
+     of party energy rather than flat neutral beige */
+  --bg: #fceee0;
+  --bg-soft: #f8d9a8;
+  --bg-warm: #f0a868;
+
+  /* card / paper surfaces, slightly lifted off the page */
+  --cream: #fffdf8;
+
+  /* text — deep and warm, not gray */
+  --ink: #2e1a12;
+  --ink-soft: #6b4636;
+
+  /* accents — saturated, not muted */
+  --gold: #b8860b;
+  --gold-soft: #d4a017;
+  --gold-glow: #f7c948;
+  --rose-gold: #e5734f;
+  --rose-deep: #c81e3f;
+  --wine: #7a1650;
+
+  /* confetti / party accents — used for sparkles, confetti bursts,
+     highlight dots, so the site reads as a celebration, not a museum */
+  --party-pink: #f0508a;
+  --party-teal: #17a8a0;
+  --party-purple: #9b5de5;
+  --party-blue: #3f8ef0;
+
+  --line: rgba(46, 26, 18, 0.16);
+
+  --font-script: 'Great Vibes', cursive;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --font-ui: 'Poppins', sans-serif;
+
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+button {
+  font-family: var(--font-ui);
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--gold-glow);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rose-gold);
+  border-radius: 10px;
+}
+
+/* shared reveal-on-scroll utility, driven by RevealDirective */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s var(--ease-silk), transform 0.9s var(--ease-silk);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.22s; }
+.reveal-delay-3 { transition-delay: 0.34s; }
+
+.section-eyebrow {
+  font-family: var(--font-ui);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--gold);
+  opacity: 0.95;
+}
+
+.script {
+  font-family: var(--font-script);
+}
+
+.gradient-heading {
+  background: linear-gradient(100deg, var(--rose-deep) 0%, var(--gold) 55%, var(--wine) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

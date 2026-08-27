@@ -1,0 +1,29 @@
+<section class="letter-section" id="letter">
+  <app-ambient-sparkles [count]="38"></app-ambient-sparkles>
+
+  <div class="heading" appReveal>
+    <p class="section-eyebrow">For your eyes only</p>
+    <h2 class="gradient-heading">A Letter, Sealed With Something Real</h2>
+  </div>
+
+  <div class="stage" appReveal>
+    <div class="envelope" [class.opened]="opened" (click)="!opened && open()">
+      <div class="flap"></div>
+      <div class="body"></div>
+      <button class="seal" *ngIf="!opened" type="button" (click)="open()" aria-label="Open the letter">
+        <span>{{ name[0] }}</span>
+      </button>
+      <p class="tap-hint" *ngIf="!opened">tap the seal to open</p>
+    </div>
+
+    <div class="paper" *ngIf="opened">
+      <p class="salutation">{{ letter.salutation }}</p>
+      <p class="paragraph" *ngFor="let p of letter.paragraphs; let i = index" [style.animation-delay.ms]="300 + i * 500">
+        {{ p }}
+      </p>
+      <p class="signoff" [style.animation-delay.ms]="300 + letter.paragraphs.length * 500">
+        {{ letter.signOff }},<br /><span class="script">{{ letter.signature }}</span>
+      </p>
+    </div>
+  </div>
+</section>

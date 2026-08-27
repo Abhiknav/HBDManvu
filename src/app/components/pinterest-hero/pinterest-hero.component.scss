@@ -1,0 +1,124 @@
+.wall-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.wall {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+}
+
+.row {
+  display: flex;
+  gap: 0.8rem;
+  width: max-content;
+  animation-name: marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.tile {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(160px, 20vw, 260px);
+  aspect-ratio: 4 / 5;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, var(--rose-gold), var(--bg-warm));
+  opacity: 0.5;
+}
+
+.tile img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(20, 12, 8, 0.55) 0%, rgba(20, 12, 8, 0.35) 40%, rgba(20, 12, 8, 0.6) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.headline {
+  font-size: clamp(3rem, 10vw, 6rem);
+  color: var(--cream);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
+}
+
+.subline {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  color: rgba(255, 253, 248, 0.85);
+  font-style: italic;
+  max-width: 40ch;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: rgba(255, 253, 248, 0.1);
+  border: 1px solid rgba(255, 253, 248, 0.35);
+  color: var(--cream);
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  backdrop-filter: blur(4px);
+  animation: bob 2.4s ease-in-out infinite;
+  transition: background 0.3s var(--ease-silk);
+
+  &:hover {
+    background: rgba(255, 253, 248, 0.2);
+  }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}

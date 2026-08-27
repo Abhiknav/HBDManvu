@@ -1,0 +1,97 @@
+<section class="wish-section" id="wishes">
+  <div class="heading" appReveal>
+    <p class="section-eyebrow">{{ content.eyebrow }}</p>
+    <h2>{{ content.title }}</h2>
+    <span class="divider" aria-hidden="true"></span>
+    <p class="subtitle">{{ content.subtitle }}</p>
+  </div>
+
+  <div class="sky" appReveal (click)="onSkyClick($event)">
+    <span
+      class="twinkle"
+      *ngFor="let t of twinkles"
+      [style.left.%]="t.left"
+      [style.top.%]="t.top"
+      [style.width.px]="t.size"
+      [style.height.px]="t.size"
+      [style.animation-delay.s]="t.delay"
+      [style.animation-duration.s]="t.duration"
+    ></span>
+
+    <div class="moon" aria-hidden="true">
+      <span class="moon-glow"></span>
+      <svg class="moon-svg" viewBox="0 0 24 24">
+        <defs>
+          <radialGradient id="moonGrad" cx="35%" cy="30%" r="75%">
+            <stop offset="0%" stop-color="#fffdf0" />
+            <stop offset="100%" stop-color="#f7c948" />
+          </radialGradient>
+        </defs>
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="url(#moonGrad)" />
+      </svg>
+      <span class="moon-sparkle s1"></span>
+      <span class="moon-sparkle s2"></span>
+      <span class="moon-sparkle s3"></span>
+    </div>
+
+    <span
+      class="ripple"
+      *ngFor="let r of ripples"
+      [style.left.%]="r.left"
+      [style.top.%]="r.top"
+    ></span>
+
+    <button
+      class="star"
+      *ngFor="let s of stars"
+      [class.found]="s.found"
+      [class.shooting]="s.shooting"
+      [class.hinting]="hinting && !s.found"
+      [style.left.%]="s.left"
+      [style.top.%]="s.top"
+      [style.width.px]="s.size"
+      [style.height.px]="s.size"
+      [style.margin-left.px]="-s.size / 2"
+      [style.margin-top.px]="-s.size / 2"
+      [style.animation-delay.s]="s.delay"
+      (click)="findStar(s, $event)"
+      type="button"
+      [attr.aria-label]="s.found ? 'Wish already found' : 'A hidden wish'"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 1.5l2.9 6.6 7.1.7-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 8.8l7.1-.7z"/>
+      </svg>
+    </button>
+
+    <div
+      class="wish-bubble"
+      *ngIf="activeWish as w"
+      [class.below]="w.below"
+      [style.left.%]="w.left"
+      [style.top.%]="w.top"
+    >
+      {{ w.text }}
+    </div>
+  </div>
+
+  <div class="footer" appReveal>
+    <p class="tally">
+      <ng-container *ngIf="!allWishesFound">
+        {{ wishesFound }} of {{ stars.length }} {{ content.tallyLabel }}
+      </ng-container>
+      <ng-container *ngIf="allWishesFound">{{ content.allSentLabel }}</ng-container>
+    </p>
+
+    <p class="miss" [class.visible]="missed">{{ content.missLabel }}</p>
+
+    <button
+      class="hint-btn"
+      type="button"
+      *ngIf="!allWishesFound"
+      (click)="showHint()"
+      [disabled]="hinting"
+    >
+      {{ content.hintLabel }}
+    </button>
+  </div>
+</section>

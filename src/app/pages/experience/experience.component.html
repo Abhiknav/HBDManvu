@@ -1,0 +1,23 @@
+<nav class="dot-nav" aria-label="Section navigation">
+  <button
+    *ngFor="let item of navItems"
+    class="dot"
+    [class.active]="activeId === item.id"
+    (click)="goTo(item.id)"
+    [attr.aria-label]="item.label"
+    type="button"
+  >
+    <span class="tooltip">{{ item.label }}</span>
+  </button>
+</nav>
+
+<main>
+  <app-pinterest-hero></app-pinterest-hero>
+  <app-dna-story></app-dna-story>
+  <app-balloons></app-balloons>
+  <app-memory-wheel></app-memory-wheel>
+  <app-wish-stars></app-wish-stars>
+  <app-love-letter></app-love-letter>
+  <app-scratch-reveal></app-scratch-reveal>
+  <app-finale></app-finale>
+</main>

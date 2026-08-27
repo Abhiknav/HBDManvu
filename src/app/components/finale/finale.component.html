@@ -1,0 +1,20 @@
+<section class="finale-section" id="finale">
+  <app-ambient-sparkles [count]="50"></app-ambient-sparkles>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="surprise-view">
+    <p class="section-eyebrow" appReveal>{{ content.eyebrow }}</p>
+    <h2 class="script big-name" appReveal>{{ name }}</h2>
+    <p class="age-line" appReveal>{{ age }} years old tonight, and more herself than ever</p>
+
+    <p
+      class="message-line"
+      *ngFor="let line of content.message; let i = index"
+      [class.headline]="i === 0"
+      appReveal
+    >
+      {{ line }}
+    </p>
+    <p class="signature" appReveal>{{ content.signature }}</p>
+  </div>
+</section>

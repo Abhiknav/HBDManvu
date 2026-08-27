@@ -1,0 +1,155 @@
+.landing {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(240, 80, 138, 0.16), transparent 45%),
+    radial-gradient(circle at 88% 15%, rgba(155, 93, 229, 0.15), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(23, 168, 160, 0.14), transparent 50%),
+    radial-gradient(ellipse at 50% 20%, var(--bg-warm) 0%, var(--bg) 65%);
+  background-size: 140% 140%, 140% 140%, 140% 140%, 100% 100%;
+  animation: bg-drift 16s ease-in-out infinite;
+  padding: 6rem 1.5rem;
+  transition: opacity 0.75s var(--ease-silk), transform 0.75s var(--ease-silk);
+
+  &.leaving {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+@keyframes bg-drift {
+  0%, 100% { background-position: 0% 0%, 100% 0%, 50% 100%, center; }
+  50% { background-position: 20% 15%, 80% 20%, 55% 90%, center; }
+}
+
+.glow {
+  position: absolute;
+  inset: -20% -20% auto -20%;
+  height: 60%;
+  background: radial-gradient(ellipse at center, rgba(247, 201, 72, 0.2), transparent 70%);
+  pointer-events: none;
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+
+.glow-2 {
+  inset: auto -20% -30% -20%;
+  height: 55%;
+  background: radial-gradient(ellipse at center, rgba(240, 80, 138, 0.16), transparent 70%);
+  animation-delay: 1.5s;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.ring-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(60vh, 560px);
+  height: min(60vh, 560px);
+  border-radius: 50%;
+  border: 1px solid rgba(247, 201, 72, 0.25);
+  transform: translate(-50%, -50%);
+  animation: ring-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.94); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.02); opacity: 0.9; }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--ink);
+
+  .line {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 500;
+  }
+
+  .name {
+    font-size: clamp(3.4rem, 11vw, 6.5rem);
+    /* Great Vibes' capitals carry flourishes that sit outside the em box —
+       without the extra line-height and side padding the M gets clipped,
+       and background-clip:text crops to this box exactly */
+    line-height: 1.45;
+    padding: 0 0.18em;
+    overflow: visible;
+    background: linear-gradient(110deg, var(--rose-deep) 20%, var(--gold) 40%, var(--gold-glow) 50%, var(--rose-deep) 70%);
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 46px rgba(247, 201, 72, 0.4);
+    animation: shimmer-sweep 5s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.subline {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+.cta {
+  margin-top: 1.5rem;
+  background: var(--rose-deep);
+  border: none;
+  color: var(--cream);
+  padding: 1rem 1.9rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  box-shadow: 0 14px 30px rgba(164, 74, 63, 0.3), 0 0 0 0 rgba(247, 201, 72, 0.5);
+  animation: cta-glow 2.6s ease-in-out infinite;
+  transition: transform 0.3s var(--ease-silk), box-shadow 0.3s var(--ease-silk);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(164, 74, 63, 0.4);
+    animation-play-state: paused;
+  }
+
+  svg {
+    transition: transform 0.3s var(--ease-silk);
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes cta-glow {
+  0%, 100% { box-shadow: 0 14px 30px rgba(164, 74, 63, 0.3), 0 0 0 0 rgba(247, 201, 72, 0.45); }
+  50% { box-shadow: 0 14px 30px rgba(164, 74, 63, 0.3), 0 0 22px 6px rgba(247, 201, 72, 0.4); }
+}

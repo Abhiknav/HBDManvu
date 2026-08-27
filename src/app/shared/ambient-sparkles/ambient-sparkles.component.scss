@@ -1,0 +1,48 @@
+:host {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  display: block;
+}
+
+.sparkle-field {
+  position: absolute;
+  inset: 0;
+}
+
+.sparkle {
+  position: absolute;
+  top: 100%;
+  border-radius: 50%;
+  opacity: 0;
+  animation-name: rise;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.sparkle.star {
+  border-radius: 0;
+  animation-name: rise-twinkle;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 0.95; }
+  50% { transform: translateY(-45vh) translateX(10px) scale(1); }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-95vh) translateX(-6px) scale(1); opacity: 0; }
+}
+
+@keyframes rise-twinkle {
+  0% { transform: translateY(0) translateX(0) scale(0.6) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateY(-45vh) translateX(-8px) scale(1.15) rotate(20deg); opacity: 0.65; }
+  75% { opacity: 1; }
+  90% { opacity: 0.5; }
+  100% { transform: translateY(-95vh) translateX(6px) scale(0.7) rotate(40deg); opacity: 0; }
+}

@@ -1,0 +1,54 @@
+<section class="balloons-section" id="balloons">
+  <app-ambient-sparkles [count]="42"></app-ambient-sparkles>
+
+  <div class="heading" appReveal>
+    <p class="section-eyebrow">{{ content.eyebrow }}</p>
+    <h2 class="gradient-heading">{{ content.title }}</h2>
+    <p class="subtitle">{{ content.subtitle }}</p>
+  </div>
+
+  <div class="sky" #sky appReveal>
+    <button
+      *ngFor="let b of balloons; let i = index; trackBy: trackByBalloon"
+      #balloonEl
+      class="balloon"
+      [class.popped]="b.popped || b.respawning"
+      [style.--hue]="b.hue"
+      (click)="pop(i, $event)"
+      [attr.aria-label]="'Pop a balloon'"
+      type="button"
+    >
+      <svg class="balloon-svg" viewBox="0 0 64 84" aria-hidden="true">
+        <ellipse cx="32" cy="34" rx="30" ry="34" class="balloon-body" />
+        <ellipse cx="32" cy="52" rx="25" ry="18" class="balloon-shade" />
+        <ellipse cx="20" cy="19" rx="8" ry="12" class="balloon-highlight" transform="rotate(-18 20 19)" />
+        <path d="M27,66 L37,66 L32,76 Z" class="balloon-knot" />
+      </svg>
+      <span class="string"></span>
+    </button>
+
+    <div
+      class="obstacle"
+      *ngFor="let o of obstacles; trackBy: trackByObstacle"
+      [style.left.px]="o.x"
+      [style.bottom.px]="o.y"
+      [style.--rotate.deg]="o.rotate"
+    >
+      <div class="photo">
+        <img *ngIf="!o.broken" [src]="o.photo" alt="" (error)="onObstacleImgError(o)" />
+        <div class="placeholder" *ngIf="o.broken">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M4 16l4.5-5 3 3L17 8l3 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="8" cy="9" r="1.2" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <p class="caption">{{ o.message }}</p>
+    </div>
+  </div>
+
+  <p class="counter" *ngIf="poppedCount > 0" appReveal>
+    {{ poppedCount }} popped so far — each one is staying right where it landed.
+  </p>
+</section>

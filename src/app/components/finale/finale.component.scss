@@ -1,0 +1,92 @@
+.finale-section {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(240, 80, 138, 0.18), transparent 45%),
+    radial-gradient(circle at 82% 18%, rgba(155, 93, 229, 0.16), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(23, 168, 160, 0.14), transparent 48%),
+    radial-gradient(ellipse at 50% 40%, var(--bg-warm), var(--bg) 75%);
+  padding: 5rem 1.5rem;
+}
+
+.glow {
+  position: absolute;
+  inset: -30% -50%;
+  background: radial-gradient(ellipse at center, rgba(247, 201, 72, 0.35), transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.surprise-view {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 640px;
+}
+
+.big-name {
+  font-size: clamp(3.6rem, 12vw, 7rem);
+  /* script capitals overflow the em box — see landing .name */
+  line-height: 1.45;
+  padding: 0 0.18em;
+  background: linear-gradient(110deg, var(--gold) 20%, var(--gold-glow) 40%, var(--rose-deep) 50%, var(--gold) 70%);
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 50px rgba(247, 201, 72, 0.5);
+  animation: shimmer-sweep 5s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.age-line {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+  margin: -0.3rem 0 0.4rem;
+}
+
+.message-line {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--ink);
+}
+
+.message-line.headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4.2vw, 2.4rem);
+  color: var(--rose-deep);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0.2rem 0 0.3rem;
+
+  &::before,
+  &::after {
+    content: '✦';
+    font-size: 0.9rem;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+}
+
+.signature {
+  margin-top: 1rem;
+  color: var(--rose-gold);
+  font-style: italic;
+}
