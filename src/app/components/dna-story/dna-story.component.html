@@ -1,16 +1,16 @@
 <section class="dna-section" id="story">
   <app-ambient-sparkles [count]="38"></app-ambient-sparkles>
 
-  <div class="heading">
-    <p class="section-eyebrow">{{ content.eyebrow }}</p>
-    <h2>{{ content.title }}</h2>
-    <span class="divider" aria-hidden="true"></span>
-    <p class="subtitle">{{ content.subtitle }}</p>
-  </div>
-
   <div class="dna-wrapper" [style.height.vh]="chapters.length * 95" (appScrollProgress)="onProgress($event)">
     <div class="dna-viewport">
       <div class="focus-glow" aria-hidden="true"></div>
+
+      <div class="heading">
+        <p class="section-eyebrow">{{ content.eyebrow }}</p>
+        <h2>{{ content.title }}</h2>
+        <span class="divider" aria-hidden="true"></span>
+        <p class="subtitle">{{ content.subtitle }}</p>
+      </div>
 
       <div class="card-stack">
         <article

@@ -63,38 +63,38 @@ export const STORY_SECTION = {
 export const STORY: StoryChapter[] = [
   {
     label: 'Chapter One',
-    title: 'The Girl Who Asked For The Moon',
+    title: 'The Little Girl And The Moon',
     folder: 'chapter1',
     text:
-      'On the thirty-first of August, in the kingdom of Pathankot, a daughter was born to King Bhubneshwar and Queen Sudesh — and the kingdom quietly agreed it had never seen anything so beautiful. She grew into a small princess with one very serious demand: she wanted the moon. Not a story about the moon, not a picture of it. The moon itself, fetched down and placed in her hands. She would point at the sky and do jidd until somebody promised to try. Nobody ever managed it. She has never entirely forgiven them.',
+      'On the thirty-first of August, in the kingdom of Pathankot, a daughter was born to King Bhubneshwar and Queen Sudesh. She was the softest, sweetest little thing — and right from the start, completely in love with the moon. Every night she would point up at it and ask for it, absolutely certain that someone would find a way to bring it down for her.',
   },
   {
     label: 'Chapter Two',
-    title: 'The Brightest Girl In Every Room',
+    title: 'The Girl Everyone Loved',
     folder: 'chapter2',
     text:
-      'Then came school, where the princess discovered she was inconveniently good at everything. Top of the class, first across the field, front of every stage — she collected trophies the way other children collected stickers. But that is not what anyone remembers. What they remember is the noise around her: a whole circle of friends orbiting her like she had her own gravity. She was the jaan of that group, the one who could turn an ordinary Tuesday into an occasion worth retelling for years.',
+      'Then came school, where she was quietly good at whatever she turned her hand to. But that is not the part anyone remembers. They remember her — warm, funny, always laughing, always up for something. She had a circle of friends who adored her, and she was the jaan of that group: the one who made an ordinary day feel like fun.',
   },
   {
     label: 'Chapter Three',
-    title: 'The Chapter Where She Wins Anyway',
+    title: 'The Years That Tested Her',
     folder: 'chapter3',
     text:
-      'College came, and with it the law — long books, longer nights, and friends who quietly became family. But every good story has a harder middle, and this one is hers. Life tested her in ways it had no business testing anyone, more than once and from more than one direction. She could have gone quiet. Instead she got stubborn — the very same jidd she once aimed at the moon, turned on everything standing in her way. She graduated. Of course she did.',
+      'College brought the law — long books, longer nights, and friends who quietly became family. It also brought a harder stretch, the kind nobody deserves and nobody is ever ready for. She carried it with more grace than it deserved, and she kept going. She came out the other side with her degree in hand and her softness completely intact.',
   },
   {
     label: 'Chapter Four',
-    title: 'Enter, Rather Nervously, A Prince',
+    title: 'And Then, A Prince',
     folder: 'chapter4',
     text:
-      'She was deep in her LLM when a prince turned up — no horse, no kingdom, and not especially charming to begin with, but hopelessly and permanently taken with her. One evening she told him her oldest secret: that as a little girl she had wanted the moon, and nobody had ever brought it. He listened. And he decided, quietly and completely, that he would love her to the moon and back so often that the moon would start to feel like the smaller gift.',
+      'She was deep in her LLM when a prince turned up — no horse, no kingdom, and hopelessly taken with her from the very first day. One evening she told him her oldest secret: that as a little girl, she had always wanted the moon. He listened. And he decided, quietly and completely, to love her to the moon and back — every single day, until she never felt she was missing it at all.',
   },
   {
     label: 'Chapter Five',
-    title: 'Happily, And Rather Loudly, Ever After',
+    title: 'Neither Of Them Remembers',
     folder: 'chapter5',
     text:
-      'Eventually the prince gathered himself and asked the question. She said yes. That is the whole ending — no dragon, no curse, no clever twist. Just a yes, and every ordinary day since made better for it. The princess still does not have the moon. But she does have someone who would genuinely try to get it for her, and honestly, that was always the better deal.',
+      'Here is the funny part: neither of them remembers how it actually began. Not the day, not the words, not who said what first. Somewhere along the way he asked, and somewhere along the way she said yes, and that was that. No grand scene worth retelling — just two people who quietly chose each other, and have been choosing each other ever since.',
   },
 ];
 

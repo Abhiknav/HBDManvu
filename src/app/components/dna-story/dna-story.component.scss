@@ -8,23 +8,29 @@
     radial-gradient(ellipse at 100% 70%, rgba(155, 93, 229, 0.15), transparent 38%),
     radial-gradient(ellipse at 50% 100%, rgba(247, 201, 72, 0.16), transparent 45%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg) 22%, var(--bg-soft) 70%, var(--bg) 100%);
-  padding: 4.5rem 1.5rem 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
 }
 
+/* inside the sticky viewport, so the title and the cards are composed
+   together on one screen and a tall card can never ride up over it */
 .heading {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  top: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  width: 100%;
   text-align: center;
   max-width: 640px;
+  padding: 0 1.5rem;
 
   h2 {
     color: var(--wine);
-    font-size: clamp(2rem, 4.6vw, 3rem);
-    margin: 0.5rem 0 0;
+    font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+    margin: 0.35rem 0 0;
     letter-spacing: 0.005em;
   }
 
@@ -32,7 +38,7 @@
     display: block;
     width: 90px;
     height: 1px;
-    margin: 1rem auto;
+    margin: 0.7rem auto;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
     position: relative;
 
@@ -84,30 +90,34 @@
 
 .card-stack {
   position: relative;
-  width: min(900px, 94vw);
-  height: min(64vh, 480px);
+  width: min(980px, 94vw);
+  height: min(60vh, 420px);
+  /* nudged below the heading — the focused card renders at 1.28x, so its
+     painted height is well beyond its box height and would otherwise
+     ride up into the title */
+  margin-top: 11vh;
 }
 
 .card {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 540px;
-  height: 240px;
-  margin: -120px 0 0 -270px;
+  width: 700px;
+  height: 330px;
+  margin: -165px 0 0 -350px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.6rem;
+  gap: 1.8rem;
   transition: opacity 0.08s linear;
   will-change: transform, opacity;
 
   @media (max-width: 720px) {
-    width: 280px;
-    height: 340px;
-    margin: -170px 0 0 -140px;
+    width: 300px;
+    height: 400px;
+    margin: -200px 0 0 -150px;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.7rem;
   }
 }
 
@@ -115,11 +125,11 @@
    reads as a flat horizontal squash instead of a card rotating in space */
 .flip-scene {
   flex: 0 0 auto;
-  width: 190px;
+  width: 240px;
   perspective: 1400px;
 
   @media (max-width: 720px) {
-    width: 150px;
+    width: 168px;
   }
 }
 
@@ -198,14 +208,16 @@
 
 .photo {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  background: linear-gradient(140deg, var(--bg-warm), var(--rose-gold));
+  aspect-ratio: 1 / 1;
+  background: #efe2d2;
   overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* contain, never cover — these are old family photos and cropping to
+       fill was cutting her out of her own picture */
+    object-fit: contain;
     display: block;
   }
 }
@@ -221,15 +233,22 @@
 }
 
 .text-block {
-  max-width: 300px;
+  flex: 1 1 auto;
+  max-width: 400px;
+  /* the card is a fixed height so the diagonal travel stays predictable;
+     the text pane owns the leftover space and scrolls only if a chapter
+     ever runs long, rather than spilling out past the card */
+  max-height: 100%;
+  overflow-y: auto;
   background: var(--cream);
   box-shadow: 0 10px 26px rgba(46, 26, 18, 0.12);
   border-radius: 14px;
-  padding: 0.8rem 1rem;
+  padding: 1.2rem 1.4rem;
 
   @media (max-width: 720px) {
     text-align: center;
-    max-width: 90%;
+    max-width: 100%;
+    padding: 0.9rem 1rem;
   }
 }
 
@@ -244,13 +263,55 @@
 
 .text-block h3 {
   color: var(--ink);
-  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.15rem, 2.1vw, 1.45rem);
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
 }
 
 .chapter-text {
   color: var(--ink-soft);
-  font-size: 1.02rem;
+  font-size: 0.98rem;
+  line-height: 1.62;
+}
+
+/* short laptop screens: the heading is a fixed height while the card
+   scales with the viewport, so below this the two start to collide.
+   Tighten both rather than letting the card ride over the title. */
+@media (max-height: 760px) {
+  .heading {
+    top: 2vh;
+
+    h2 { font-size: 1.5rem; }
+    .divider { margin: 0.5rem auto; }
+    .subtitle { font-size: 0.95rem; }
+  }
+
+  .card-stack {
+    margin-top: 9vh;
+  }
+
+  .card {
+    height: 300px;
+    margin-top: -150px;
+  }
+
+  .flip-scene {
+    width: 200px;
+  }
+
+  .text-block {
+    padding: 0.9rem 1.1rem;
+  }
+
+  .text-block h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .chapter-text {
+    font-size: 0.92rem;
+    line-height: 1.52;
+  }
 }
 
 .scroll-hint {
