@@ -21,10 +21,16 @@ import { ScrollProgressDirective } from '../../shared/scroll-progress.directive'
  * 41vh radius and a 190px card needs roughly 40 degrees even on a short
  * screen.
  */
-const ANGLE_STEP_DEG = 48;
+const ANGLE_STEP_DEG = 56;
 
-/** past this far from centre a card has faded out completely */
-const VISIBLE_ARC_DEG = 80;
+/**
+ * Past this far from centre a card has faded out completely.
+ *
+ * Kept under two steps: further round the rim the arc curves enough that
+ * a card starts clipping the focused one's corner, and a barely-visible
+ * ghost overlapping the main photo is worse than simply not showing it.
+ */
+const VISIBLE_ARC_DEG = 70;
 
 type MemoryView = {
   memory: Memory;
@@ -87,7 +93,11 @@ export class MemoryWheelComponent {
       // fade fully to nothing at the edge of the visible arc, so cards
       // waiting their turn are genuinely gone rather than stacked faintly
       const opacity = dist >= VISIBLE_ARC_DEG ? 0 : Math.max(0, 1 - dist / VISIBLE_ARC_DEG);
-      const scale = focused ? 1.12 : Math.max(0.55, 1 - dist / 150);
+      // never scales above 1: transform scaling stretches the already
+      // rasterised layer, so enlarging the focused card this way visibly
+      // softened it. The card is sized up in CSS instead, and neighbours
+      // only ever shrink — downscaling stays crisp.
+      const scale = focused ? 1 : Math.max(0.6, 1 - dist / 170);
       const z = Math.round(opacity * 100);
       return { memory, angle, opacity, scale, focused, z };
     });

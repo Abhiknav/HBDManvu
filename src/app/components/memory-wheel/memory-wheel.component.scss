@@ -74,12 +74,18 @@
 }
 
 .card {
+  /* sized against viewport height so it stays in proportion to the arc
+     radius (also vh-based) — that keeps one angular gap collision-free at
+     every screen height instead of only the one it was tuned on */
+  --card-w: clamp(150px, 33vh, 290px);
+  --card-h: calc(var(--card-w) * 1.184);
+
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 190px;
-  height: 225px;
-  margin: -112px 0 0 -95px;
+  width: var(--card-w);
+  height: var(--card-h);
+  margin: calc(var(--card-h) / -2) 0 0 calc(var(--card-w) / -2);
   transition: opacity 0.15s linear;
 }
 
@@ -165,8 +171,7 @@
   }
 
   .card {
-    width: 140px;
-    height: 168px;
-    margin: -84px 0 0 -70px;
+    /* narrower arc radius on phones, so the card scales down with it */
+    --card-w: clamp(120px, 26vh, 190px);
   }
 }
