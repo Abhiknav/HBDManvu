@@ -18,6 +18,8 @@
           [class.focused]="v.focused"
           [style.transform]="'rotate(' + v.angle + 'deg) translateY(calc(var(--arc-radius) * -1)) rotate(' + (-v.angle) + 'deg) scale(' + v.scale + ')'"
           [style.opacity]="v.opacity"
+          [style.visibility]="v.opacity === 0 ? 'hidden' : 'visible'"
+          [style.z-index]="v.z"
         >
           <div class="frame">
             <img *ngIf="v.memory.photo && !v.memory.broken" [src]="v.memory.photo" [alt]="v.memory.caption" (error)="onImgError(v.memory)" loading="lazy" />

@@ -99,7 +99,6 @@ export const WALL_PHOTOS: string[] = [
 ];
 
 export const MEMORY_PHOTOS: string[] = [
-  'assets/memories/IMG_0001%20(1).jpg',
   'assets/memories/IMG_0001.jpg',
   'assets/memories/IMG_0021.jpg',
   'assets/memories/IMG_0052.jpg',
