@@ -9,7 +9,26 @@
     <p class="section-eyebrow">{{ content.eyebrow }}</p>
     <h1 class="title">
       <span class="line">{{ content.greeting }},</span>
-      <span class="script name">{{ name }}</span>
+      <span class="name-row">
+        <span class="script name">{{ content.heroName }}</span>
+
+        <svg class="heart" viewBox="0 0 32 30" aria-hidden="true">
+          <defs>
+            <radialGradient id="heartBody" cx="34%" cy="26%" r="78%">
+              <stop offset="0%" stop-color="#ff8fa0" />
+              <stop offset="42%" stop-color="#ec1140" />
+              <stop offset="100%" stop-color="#8f0421" />
+            </radialGradient>
+          </defs>
+          <path
+            class="heart-shape"
+            d="M16 28.6C16 28.6 1.6 19.7 1.6 10.4 1.6 5.5 5.5 1.6 10.4 1.6c2.9 0 5 1.6 5.6 3.1.6-1.5 2.7-3.1 5.6-3.1 4.9 0 8.8 3.9 8.8 8.8 0 9.3-14.4 18.2-14.4 18.2z"
+            fill="url(#heartBody)"
+          />
+          <ellipse class="gloss" cx="10.4" cy="9.2" rx="3.7" ry="2.5" transform="rotate(-38 10.4 9.2)" />
+          <ellipse class="gloss gloss-sm" cx="20.6" cy="7.6" rx="1.5" ry="1" transform="rotate(-30 20.6 7.6)" />
+        </svg>
+      </span>
     </h1>
     <p class="subline">{{ content.subline }}</p>
 

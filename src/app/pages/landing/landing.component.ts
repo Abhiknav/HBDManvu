@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { LANDING, SITE } from '../../core/content.config';
+import { LANDING } from '../../core/content.config';
 import { AmbientSparklesComponent } from '../../shared/ambient-sparkles/ambient-sparkles.component';
 
 @Component({
@@ -13,7 +13,6 @@ import { AmbientSparklesComponent } from '../../shared/ambient-sparkles/ambient-
 })
 export class LandingComponent {
   content = LANDING;
-  name = SITE.name;
   leaving = false;
 
   private router = inject(Router);

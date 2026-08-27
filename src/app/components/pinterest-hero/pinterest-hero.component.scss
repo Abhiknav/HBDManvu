@@ -19,7 +19,7 @@
   /* the wall is set decoration, not the subject — pushing it back
      optically (soft focus, desaturated, darkened) is what lets the
      headline sit on top of it instead of competing with it */
-  filter: blur(2.5px) saturate(0.72) brightness(0.6);
+  filter: blur(.5px);
   /* scaled up slightly so the blur doesn't bleed a soft edge at the sides */
   transform: scale(1.04);
 }

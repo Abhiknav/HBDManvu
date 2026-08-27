@@ -16,6 +16,8 @@ export const SITE = {
 export const LANDING = {
   eyebrow: 'A little world, just for you',
   greeting: 'Happy Birthday',
+  /** the name shown on the landing hero — her pet name, not her full name */
+  heroName: 'My Betu',
   subline: 'Every year with you deserves its own celebration — this one is yours.',
   cta: 'Begin the Experience',
 };
@@ -25,7 +27,7 @@ export const LANDING = {
 // placeholders fall back to a soft tinted tile automatically.
 export const PINTEREST_WALL = {
   headline: 'My Chand Badyal',
-  subline: 'Every picture I have is proof I got lucky.',
+  subline: 'Every picture I have of you is proof I got lucky. And I have 1000s',
   scrollCue: 'scroll down',
 
   /**
@@ -51,8 +53,8 @@ export type StoryChapter = {
 
 export const STORY_SECTION = {
   eyebrow: 'Before tonight',
-  title: 'The Story of Manvi, So Far',
-  subtitle: 'Every chapter that led to who she is today — scroll to turn the strand.',
+  title: 'The Story of Manvi Badyal',
+  subtitle: 'aapki kahani meri jubaani',
 };
 
 export const STORY: StoryChapter[] = [
