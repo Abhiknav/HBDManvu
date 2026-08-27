@@ -100,7 +100,6 @@
   justify-content: center;
   gap: 1.6rem;
   transition: opacity 0.08s linear;
-  backface-visibility: hidden;
   will-change: transform, opacity;
 
   @media (max-width: 720px) {
@@ -112,17 +111,88 @@
   }
 }
 
-.polaroid {
+/* the scene supplies the vanishing point; without perspective the turn
+   reads as a flat horizontal squash instead of a card rotating in space */
+.flip-scene {
   flex: 0 0 auto;
-  background: var(--cream);
-  padding: 0.7rem 0.7rem 1.8rem;
-  border-radius: 4px;
-  box-shadow: 0 22px 44px rgba(46, 26, 18, 0.3);
   width: 190px;
+  perspective: 1400px;
 
   @media (max-width: 720px) {
     width: 150px;
-    padding: 0.5rem 0.5rem 1.3rem;
+  }
+}
+
+.flipper {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+
+  &.flipping {
+    animation: card-turn 1s cubic-bezier(0.42, 0, 0.32, 1);
+  }
+}
+
+/* a full turn, not a half — the card comes back to face her, showing the
+   next photo. The swap happens at 180deg while the back is toward us. */
+@keyframes card-turn {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+.face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.face.back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+
+  .polaroid {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.back-art {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  background:
+    repeating-linear-gradient(45deg, rgba(184, 134, 11, 0.14) 0 6px, transparent 6px 12px),
+    linear-gradient(150deg, var(--bg-warm), var(--rose-gold));
+}
+
+.crest {
+  font-size: 1.9rem;
+  color: var(--cream);
+  text-shadow: 0 2px 8px rgba(46, 26, 18, 0.35);
+}
+
+.slide-count {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  opacity: 0.65;
+}
+
+.polaroid {
+  background: var(--cream);
+  padding: 0.7rem 0.7rem 1.1rem;
+  border-radius: 4px;
+  box-shadow: 0 22px 44px rgba(46, 26, 18, 0.3);
+  width: 100%;
+
+  @media (max-width: 720px) {
+    padding: 0.5rem 0.5rem 0.9rem;
   }
 }
 
@@ -151,7 +221,7 @@
 }
 
 .text-block {
-  max-width: 280px;
+  max-width: 300px;
   background: var(--cream);
   box-shadow: 0 10px 26px rgba(46, 26, 18, 0.12);
   border-radius: 14px;

@@ -21,15 +21,34 @@
           [style.z-index]="v.z"
           [style.pointer-events]="v.opacity < 0.15 ? 'none' : 'auto'"
         >
-          <div class="polaroid">
-            <div class="photo">
-              <img *ngIf="!v.chapter.broken" [src]="v.chapter.photo" [alt]="v.chapter.title" (error)="onImgError(v.chapter)" loading="lazy" />
-              <div class="placeholder" *ngIf="v.chapter.broken">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 16l4.5-5 3 3L17 8l3 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                  <circle cx="8" cy="9" r="1.2" fill="currentColor"/>
-                </svg>
+          <div class="flip-scene">
+            <div class="flipper" [class.flipping]="v.flipping">
+              <!-- face-up: the current slide -->
+              <div class="face front">
+                <div class="polaroid">
+                  <div class="photo">
+                    <img *ngIf="v.photos.length" [src]="v.photos[v.slide]" [alt]="v.chapter.title" />
+                    <div class="placeholder" *ngIf="!v.photos.length">
+                      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 16l4.5-5 3 3L17 8l3 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="8" cy="9" r="1.2" fill="currentColor"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="slide-count" *ngIf="v.photos.length > 1">
+                    {{ v.slide + 1 }} / {{ v.photos.length }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- face-down: a storybook card back, seen only mid-turn -->
+              <div class="face back" aria-hidden="true">
+                <div class="polaroid">
+                  <div class="back-art">
+                    <span class="crest">✦</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -42,7 +61,7 @@
         </article>
       </div>
 
-      <p class="scroll-hint">keep scrolling to continue her story</p>
+      <p class="scroll-hint">keep scrolling to turn the page</p>
     </div>
   </div>
 </section>

@@ -39,20 +39,23 @@ export const PINTEREST_WALL = {
   photoCount: 35,
 };
 
-// The narrative arc of her life so far, told as chapters along a DNA
-// strand — replace the placeholder photo/text per chapter. The last one
-// or two should bridge into tonight, since the site is shown at the end
-// of the birthday itself, not before it.
+// Her life told as a fairytale, one chapter at a time. Each chapter shows
+// every photo in its folder as a slide that flips over to reveal the next.
+//
+// Photos come from src/assets/story/chapter1 .. chapter5 and are picked up
+// automatically by scripts/generate-story-manifest.js — drop images into a
+// chapter folder under any filename and they appear here, in order. A
+// chapter with no photos yet simply shows a decorated empty frame.
 export type StoryChapter = {
   label: string;
   title: string;
-  photo: string; // e.g. 'assets/story/1.jpg'
+  /** which folder under assets/story this chapter's slides come from */
+  folder: string;
   text: string;
-  broken?: boolean;
 };
 
 export const STORY_SECTION = {
-  eyebrow: 'Before tonight',
+  eyebrow: 'Once upon a time',
   title: 'The Story of Manvi Badyal',
   subtitle: 'aapki kahani meri jubaani',
 };
@@ -60,39 +63,38 @@ export const STORY_SECTION = {
 export const STORY: StoryChapter[] = [
   {
     label: 'Chapter One',
-    title: 'Where It All Began',
-    photo: 'assets/story/1.jpg',
-    text: 'Replace this with a few lines about her earliest years — where she grew up, what she was like as a kid, whatever makes this feel like the opening page of her story.',
+    title: 'The Girl Who Asked For The Moon',
+    folder: 'chapter1',
+    text:
+      'On the thirty-first of August, in the kingdom of Pathankot, a daughter was born to King Bhubneshwar and Queen Sudesh — and the kingdom quietly agreed it had never seen anything so beautiful. She grew into a small princess with one very serious demand: she wanted the moon. Not a story about the moon, not a picture of it. The moon itself, fetched down and placed in her hands. She would point at the sky and do jidd until somebody promised to try. Nobody ever managed it. She has never entirely forgiven them.',
   },
   {
     label: 'Chapter Two',
-    title: 'Growing Into Herself',
-    photo: 'assets/story/2.jpg',
-    text: 'Add a note about her school or college years — the version of her that was figuring things out, becoming who she is now.',
+    title: 'The Brightest Girl In Every Room',
+    folder: 'chapter2',
+    text:
+      'Then came school, where the princess discovered she was inconveniently good at everything. Top of the class, first across the field, front of every stage — she collected trophies the way other children collected stickers. But that is not what anyone remembers. What they remember is the noise around her: a whole circle of friends orbiting her like she had her own gravity. She was the jaan of that group, the one who could turn an ordinary Tuesday into an occasion worth retelling for years.',
   },
   {
     label: 'Chapter Three',
-    title: 'Finding Her People',
-    photo: 'assets/story/3.jpg',
-    text: 'A paragraph about her friendships, her family, the people who shaped her — whatever feels true.',
+    title: 'The Chapter Where She Wins Anyway',
+    folder: 'chapter3',
+    text:
+      'College came, and with it the law — long books, longer nights, and friends who quietly became family. But every good story has a harder middle, and this one is hers. Life tested her in ways it had no business testing anyone, more than once and from more than one direction. She could have gone quiet. Instead she got stubborn — the very same jidd she once aimed at the moon, turned on everything standing in her way. She graduated. Of course she did.',
   },
   {
     label: 'Chapter Four',
-    title: 'The Chapter With Me',
-    photo: 'assets/story/4.jpg',
-    text: 'This is where you two enter the story — how you met, or what changed once you did. Keep it personal.',
+    title: 'Enter, Rather Nervously, A Prince',
+    folder: 'chapter4',
+    text:
+      'She was deep in her LLM when a prince turned up — no horse, no kingdom, and not especially charming to begin with, but hopelessly and permanently taken with her. One evening she told him her oldest secret: that as a little girl she had wanted the moon, and nobody had ever brought it. He listened. And he decided, quietly and completely, that he would love her to the moon and back so often that the moon would start to feel like the smaller gift.',
   },
   {
     label: 'Chapter Five',
-    title: 'Who She Is Today',
-    photo: 'assets/story/5.jpg',
-    text: 'Describe her now — her strength, her humor, whatever you admire most about the person she has become.',
-  },
-  {
-    label: 'Tonight',
-    title: 'A New Chapter Begins',
-    photo: 'assets/story/6.jpg',
-    text: 'And then, tonight — another year added to her story. Everything from here on is just the beginning of it.',
+    title: 'Happily, And Rather Loudly, Ever After',
+    folder: 'chapter5',
+    text:
+      'Eventually the prince gathered himself and asked the question. She said yes. That is the whole ending — no dragon, no curse, no clever twist. Just a yes, and every ordinary day since made better for it. The princess still does not have the moon. But she does have someone who would genuinely try to get it for her, and honestly, that was always the better deal.',
   },
 ];
 
