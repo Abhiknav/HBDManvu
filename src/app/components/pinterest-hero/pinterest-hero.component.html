@@ -1,10 +1,16 @@
 <section class="wall-hero" id="welcome">
   <div class="wall" aria-hidden="true">
-    <div class="row" *ngFor="let row of rows" [style.animation-duration.s]="row.duration">
-      <div class="tile" *ngFor="let photo of row.photos">
-        <div class="placeholder"></div>
-        <img [src]="photo" alt="" (error)="onImgError($event)" loading="lazy" />
-      </div>
+    <div
+      class="row"
+      *ngFor="let row of rows"
+      [style.animation-duration.s]="row.duration"
+      [style.animation-delay.s]="row.offset"
+    >
+      <ng-container *ngFor="let photo of row.photos">
+        <div class="tile" *ngIf="!photo.missing">
+          <img [src]="photo.src" alt="" (error)="onImgError(photo)" decoding="async" />
+        </div>
+      </ng-container>
     </div>
   </div>
 

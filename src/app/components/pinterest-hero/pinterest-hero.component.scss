@@ -16,6 +16,12 @@
   justify-content: space-evenly;
   gap: 0.8rem;
   padding: 0.8rem 0;
+  /* the wall is set decoration, not the subject — pushing it back
+     optically (soft focus, desaturated, darkened) is what lets the
+     headline sit on top of it instead of competing with it */
+  filter: blur(2.5px) saturate(0.72) brightness(0.6);
+  /* scaled up slightly so the blur doesn't bleed a soft edge at the sides */
+  transform: scale(1.04);
 }
 
 .row {
@@ -36,23 +42,16 @@
 .tile {
   position: relative;
   flex: 0 0 auto;
-  width: clamp(160px, 20vw, 260px);
+  /* smaller tiles mean more of her photos are on screen at any moment,
+     which reads as variety rather than a short repeating loop */
+  width: clamp(140px, 16vw, 215px);
   aspect-ratio: 4 / 5;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
-.placeholder {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(150deg, var(--rose-gold), var(--bg-warm));
-  opacity: 0.5;
-}
-
 .tile img {
-  position: relative;
-  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -63,7 +62,10 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(20, 12, 8, 0.55) 0%, rgba(20, 12, 8, 0.35) 40%, rgba(20, 12, 8, 0.6) 100%);
+    /* pool of shadow directly behind the headline so it reads cleanly
+       no matter which photo happens to drift underneath it */
+    radial-gradient(ellipse 58% 46% at 50% 47%, rgba(10, 5, 3, 0.86) 0%, rgba(10, 5, 3, 0.5) 55%, rgba(10, 5, 3, 0.28) 100%),
+    linear-gradient(180deg, rgba(10, 5, 3, 0.72) 0%, rgba(10, 5, 3, 0.42) 38%, rgba(10, 5, 3, 0.78) 100%);
   pointer-events: none;
 }
 
@@ -79,17 +81,25 @@
 }
 
 .headline {
-  font-size: clamp(3rem, 10vw, 6rem);
+  font-size: clamp(3.2rem, 10.5vw, 6.6rem);
   color: var(--cream);
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  line-height: 1.1;
+  /* script capitals overflow the em box — see landing .name */
+  line-height: 1.35;
+  padding: 0 0.14em;
+  /* tight dark shadow for legibility over any photo, then a wide warm
+     halo so it glows off the wall rather than sitting flat on it */
+  text-shadow:
+    0 2px 12px rgba(10, 5, 3, 0.9),
+    0 4px 40px rgba(10, 5, 3, 0.75),
+    0 0 70px rgba(247, 201, 72, 0.4);
 }
 
 .subline {
   font-size: clamp(1.05rem, 2vw, 1.35rem);
-  color: rgba(255, 253, 248, 0.85);
+  color: rgba(255, 253, 248, 0.92);
   font-style: italic;
   max-width: 40ch;
+  text-shadow: 0 2px 14px rgba(10, 5, 3, 0.9);
 }
 
 .scroll-cue {

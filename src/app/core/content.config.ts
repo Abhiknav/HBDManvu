@@ -27,7 +27,14 @@ export const PINTEREST_WALL = {
   headline: 'My Chand Badyal',
   subline: 'Every picture I have is proof I got lucky.',
   scrollCue: 'scroll down',
-  photos: Array.from({ length: 14 }, (_, i) => `assets/wall/${i + 1}.jpg`),
+
+  /**
+   * How many photos live in src/assets/wall, named 1.jpg, 2.jpg, 3.jpg...
+   * Just bump this number when you add more. Setting it higher than the
+   * number of files you actually have is harmless — any tile whose image
+   * is missing removes itself from the wall instead of leaving a gap.
+   */
+  photoCount: 35,
 };
 
 // The narrative arc of her life so far, told as chapters along a DNA

@@ -2,7 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { PINTEREST_WALL } from '../../core/content.config';
 
-type Row = { photos: string[]; duration: number; reverse: boolean };
+type Photo = { src: string; missing: boolean };
+type Row = { photos: Photo[]; duration: number; offset: number };
+
+const ROW_COUNT = 3;
+const ROW_DURATIONS = [64, 52, 74];
 
 @Component({
   selector: 'app-pinterest-hero',
@@ -17,22 +21,30 @@ export class PinterestHeroComponent {
   rows: Row[] = this.buildRows();
 
   private buildRows(): Row[] {
-    const rowCount = 3;
-    const buckets: string[][] = Array.from({ length: rowCount }, () => []);
-    this.content.photos.forEach((photo, i) => buckets[i % rowCount].push(photo));
+    const photos: Photo[] = Array.from({ length: this.content.photoCount }, (_, i) => ({
+      src: `assets/wall/${i + 1}.jpg`,
+      missing: false,
+    }));
 
-    const durations = [42, 34, 50];
-    return buckets.map((photos, i) => ({
-      // duplicate so the marquee loop is seamless
-      photos: [...photos, ...photos],
-      duration: durations[i % durations.length],
-      reverse: false,
+    // deal photos round-robin so no two rows ever show the same picture,
+    // and every photo appears exactly once across the wall
+    const buckets: Photo[][] = Array.from({ length: ROW_COUNT }, () => []);
+    photos.forEach((photo, i) => buckets[i % ROW_COUNT].push(photo));
+
+    return buckets.map((bucket, i) => ({
+      // the marquee scrolls one full copy's width, so a second copy is
+      // required for the loop to close seamlessly. Both halves hold the
+      // SAME Photo objects, so a missing file drops out of both at once
+      // and the two halves stay identical in width.
+      photos: [...bucket, ...bucket],
+      duration: ROW_DURATIONS[i % ROW_DURATIONS.length],
+      // stagger each row's starting point so they never march in lockstep
+      offset: -(i * 9),
     }));
   }
 
-  onImgError(event: Event): void {
-    const img = event.target as HTMLImageElement;
-    img.style.visibility = 'hidden';
+  onImgError(photo: Photo): void {
+    photo.missing = true;
   }
 
   scrollToNext(): void {
