@@ -29,14 +29,8 @@ export const PINTEREST_WALL = {
   headline: 'My Chand Badyal',
   subline: 'Every picture I have of you is proof I got lucky. And I have 1000s',
   scrollCue: 'scroll down',
-
-  /**
-   * How many photos live in src/assets/wall, named 1.jpg, 2.jpg, 3.jpg...
-   * Just bump this number when you add more. Setting it higher than the
-   * number of files you actually have is harmless — any tile whose image
-   * is missing removes itself from the wall instead of leaving a gap.
-   */
-  photoCount: 35,
+  // photos are read straight from src/assets/wall — drop more in and they
+  // appear, no count to keep in sync
 };
 
 // Her life told as a fairytale, one chapter at a time. Each chapter shows
@@ -99,20 +93,26 @@ export const STORY: StoryChapter[] = [
 ];
 
 export const BALLOONS = {
-  eyebrow: 'Pop them open',
+  eyebrow: 'Why I Love You So Much?',
   title: 'A Sky Full of Little Reasons',
   subtitle: 'Every balloon is hiding a little polaroid. Tap one, slowly, and see what falls out.',
-  notes: [
-    { message: 'The way you laugh at your own jokes before you finish telling them.', photo: 'assets/balloons/1.jpg' },
-    { message: 'How you turn any ordinary day into something worth remembering.', photo: 'assets/balloons/2.jpg' },
-    { message: 'Your voice is the first thing that makes a bad day feel survivable.', photo: 'assets/balloons/3.jpg' },
-    { message: 'The way you care for people, even when no one’s watching.', photo: 'assets/balloons/4.jpg' },
-    { message: 'Every ridiculous nickname you’ve ever answered to without complaint.', photo: 'assets/balloons/5.jpg' },
-    { message: 'How stubborn you are — and how much I love that about you.', photo: 'assets/balloons/6.jpg' },
-    { message: 'The way you get excited about the smallest things.', photo: 'assets/balloons/7.jpg' },
-    { message: 'That you’re somehow more you every single year.', photo: 'assets/balloons/8.jpg' },
-    { message: 'Your terrible, wonderful, unstoppable energy.', photo: 'assets/balloons/9.jpg' },
-    { message: 'Simply put: you.', photo: 'assets/balloons/10.jpg' },
+  /**
+   * Reasons, kept separate from the photos on purpose. Photos are picked up
+   * automatically from src/assets/balloons (any filename, any extension),
+   * so the two lists no longer have to be the same length — add either
+   * without touching the other. Each popped balloon draws one of each.
+   */
+  messages: [
+    'The way you laugh at your own jokes before you finish telling them.',
+    'How you turn any ordinary day into something worth remembering.',
+    'Your voice is the first thing that makes a bad day feel survivable.',
+    'The way you care for people, even when no one’s watching.',
+    'Every ridiculous nickname you’ve ever answered to without complaint.',
+    'How stubborn you are — and how much I love that about you.',
+    'The way you get excited about the smallest things.',
+    'That you’re somehow more you every single year.',
+    'Your terrible, wonderful, unstoppable energy.',
+    'Simply put: you.',
   ],
 };
 

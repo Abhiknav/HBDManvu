@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import confetti from 'canvas-confetti';
 import { BALLOONS } from '../../core/content.config';
+import { BALLOON_PHOTOS } from '../../core/photo-manifest.generated';
 import { AmbientSparklesComponent } from '../../shared/ambient-sparkles/ambient-sparkles.component';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { SoundService } from '../../shared/sound.service';
@@ -62,7 +63,10 @@ export class BalloonsComponent implements AfterViewInit, OnDestroy {
 
   private nextId = 0;
   private nextObstacleId = 0;
-  private notePool = this.shuffled(this.content.notes);
+  // drawn from independently so every photo gets seen even though there
+  // are far more photos than reasons
+  private messagePool = this.shuffled(this.content.messages);
+  private photoPool = this.shuffled(BALLOON_PHOTOS);
   private rafId?: number;
   private lastTime = 0;
   private resizeObserver?: ResizeObserver;
@@ -91,11 +95,19 @@ export class BalloonsComponent implements AfterViewInit, OnDestroy {
     this.containerH = rect.height;
   }
 
-  private nextNote() {
-    if (this.notePool.length === 0) {
-      this.notePool = this.shuffled(this.content.notes);
+  /** each pool reshuffles once exhausted, so nothing repeats until all are used */
+  private nextMessage(): string {
+    if (this.messagePool.length === 0) {
+      this.messagePool = this.shuffled(this.content.messages);
     }
-    return this.notePool.pop()!;
+    return this.messagePool.pop()!;
+  }
+
+  private nextPhoto(): string {
+    if (this.photoPool.length === 0) {
+      this.photoPool = this.shuffled(BALLOON_PHOTOS);
+    }
+    return this.photoPool.pop() ?? '';
   }
 
   private shuffled<T>(arr: T[]): T[] {
@@ -108,7 +120,6 @@ export class BalloonsComponent implements AfterViewInit, OnDestroy {
   }
 
   private spawn(initial: boolean): Balloon {
-    const note = this.nextNote();
     const w = Math.max(this.containerW, 320);
     return {
       id: this.nextId++,
@@ -122,8 +133,8 @@ export class BalloonsComponent implements AfterViewInit, OnDestroy {
       swayFreq: 0.4 + Math.random() * 0.5,
       swayAmp: 18 + Math.random() * 14,
       seed: Math.random() * Math.PI * 2,
-      message: note.message,
-      photo: note.photo,
+      message: this.nextMessage(),
+      photo: this.nextPhoto(),
       popped: false,
       respawning: false,
     };

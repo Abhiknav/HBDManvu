@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgZone, OnDestroy, inject } from '@angular/core';
 import { STORY, STORY_SECTION, StoryChapter } from '../../core/content.config';
-import { STORY_PHOTOS } from '../../core/story-photos.generated';
+import { STORY_PHOTOS } from '../../core/photo-manifest.generated';
 import { AmbientSparklesComponent } from '../../shared/ambient-sparkles/ambient-sparkles.component';
 import { ScrollProgressDirective } from '../../shared/scroll-progress.directive';
 

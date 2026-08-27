@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { PINTEREST_WALL } from '../../core/content.config';
+import { WALL_PHOTOS } from '../../core/photo-manifest.generated';
 
 type Photo = { src: string; missing: boolean };
 type Row = { photos: Photo[]; duration: number; offset: number };
@@ -21,10 +22,7 @@ export class PinterestHeroComponent {
   rows: Row[] = this.buildRows();
 
   private buildRows(): Row[] {
-    const photos: Photo[] = Array.from({ length: this.content.photoCount }, (_, i) => ({
-      src: `assets/wall/${i + 1}.jpg`,
-      missing: false,
-    }));
+    const photos: Photo[] = WALL_PHOTOS.map((src) => ({ src, missing: false }));
 
     // deal photos round-robin so no two rows ever show the same picture,
     // and every photo appears exactly once across the wall
