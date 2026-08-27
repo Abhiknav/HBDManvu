@@ -139,22 +139,31 @@ export const WISH_STARS = {
 export const MEMORIES_SECTION = {
   eyebrow: 'Moments',
   title: 'A Small Museum of Us',
-  subtitle: 'Scroll to turn the wheel — replace these placeholders with real photos in assets/memories/ whenever you’re ready.',
+  subtitle: 'Scroll to turn the wheel.',
 };
 
 export type Memory = {
-  photo: string; // e.g. 'assets/memories/1.jpg' — replace placeholders when ready
+  photo: string;
   caption: string;
   date?: string;
   broken?: boolean;
 };
 
-export const MEMORIES: Memory[] = [
-  { photo: 'assets/memories/1.jpg', caption: 'Replace me with a photo that makes you smile.', date: 'someday' },
-  { photo: 'assets/memories/2.jpg', caption: 'A moment worth keeping forever.', date: 'someday' },
-  { photo: 'assets/memories/3.jpg', caption: 'The one where we couldn’t stop laughing.', date: 'someday' },
-  { photo: 'assets/memories/4.jpg', caption: 'A quiet moment that meant everything.', date: 'someday' },
-  { photo: 'assets/memories/5.jpg', caption: 'One more, just because.', date: 'someday' },
+/**
+ * Captions for the memory wheel. Photos themselves come from
+ * src/assets/memories — any filename works — and these captions pair with
+ * them IN ORDER: the first caption belongs to the first photo
+ * alphabetically, and so on.
+ *
+ * Add or remove captions freely. Extra photos simply appear without one,
+ * and extra captions are ignored, so the two lists never have to match.
+ */
+export const MEMORY_CAPTIONS: Array<{ caption: string; date?: string }> = [
+  { caption: 'Replace me with a photo that makes you smile.' },
+  { caption: 'A moment worth keeping forever.' },
+  { caption: 'The one where we couldn’t stop laughing.' },
+  { caption: 'A quiet moment that meant everything.' },
+  { caption: 'One more, just because.' },
 ];
 
 export const LOVE_LETTER = {

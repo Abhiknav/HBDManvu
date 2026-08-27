@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MEMORIES, MEMORIES_SECTION, Memory } from '../../core/content.config';
+import { MEMORIES_SECTION, MEMORY_CAPTIONS, Memory } from '../../core/content.config';
+import { MEMORY_PHOTOS } from '../../core/photo-manifest.generated';
 import { AmbientSparklesComponent } from '../../shared/ambient-sparkles/ambient-sparkles.component';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { ScrollProgressDirective } from '../../shared/scroll-progress.directive';
@@ -15,6 +16,25 @@ type MemoryView = {
   focused: boolean;
 };
 
+/**
+ * Photos on the wheel come from the folder; captions are paired to them by
+ * position. Whichever list is longer just runs past the other rather than
+ * dropping photos or erroring.
+ */
+function buildMemories(): Memory[] {
+  if (MEMORY_PHOTOS.length === 0) {
+    // nothing added yet — keep the wheel populated with empty frames so the
+    // section still reads as a wheel rather than collapsing
+    return MEMORY_CAPTIONS.map((c) => ({ photo: '', caption: c.caption, date: c.date }));
+  }
+
+  return MEMORY_PHOTOS.map((photo, i) => ({
+    photo,
+    caption: MEMORY_CAPTIONS[i]?.caption ?? '',
+    date: MEMORY_CAPTIONS[i]?.date,
+  }));
+}
+
 @Component({
   selector: 'app-memory-wheel',
   standalone: true,
@@ -24,12 +44,12 @@ type MemoryView = {
 })
 export class MemoryWheelComponent {
   content = MEMORIES_SECTION;
-  memories = MEMORIES;
+  memories = buildMemories();
 
   views: MemoryView[] = [];
-  focusedMemory: Memory = MEMORIES[0];
+  focusedMemory: Memory = this.memories[0];
 
-  private angleStep = MEMORIES.length > 1 ? SPAN_DEG / (MEMORIES.length - 1) : 0;
+  private angleStep = this.memories.length > 1 ? SPAN_DEG / (this.memories.length - 1) : 0;
 
   constructor() {
     this.recompute(0);

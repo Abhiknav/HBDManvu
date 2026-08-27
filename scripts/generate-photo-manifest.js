@@ -16,6 +16,10 @@ const path = require('path');
 const ASSETS = path.join(__dirname, '..', 'src', 'assets');
 const OUT_FILE = path.join(__dirname, '..', 'src', 'app', 'core', 'photo-manifest.generated.ts');
 const IMAGE_RE = /\.(jpe?g|png|webp|gif|avif)$/i;
+/** formats browsers cannot display — worth shouting about rather than skipping quietly */
+const UNSUPPORTED_RE = /\.(heic|heif|tiff?|bmp|raw|dng|cr2|nef)$/i;
+
+const skipped = [];
 
 /** "2.jpg" before "10.jpg", and "1 (2).jpg" next to "1.jpg" */
 const naturalSort = (a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
@@ -25,8 +29,13 @@ function scan(relDir) {
   const dir = path.join(ASSETS, relDir);
   if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) return [];
 
-  return fs
-    .readdirSync(dir)
+  const entries = fs.readdirSync(dir);
+
+  for (const f of entries) {
+    if (UNSUPPORTED_RE.test(f)) skipped.push(`${relDir}/${f}`);
+  }
+
+  return entries
     .filter((f) => IMAGE_RE.test(f))
     .sort(naturalSort)
     // spaces and parentheses are legal on disk but must be escaped in a URL
@@ -82,3 +91,11 @@ const storySummary = Object.entries(story)
 console.log(
   `generate-photo-manifest: balloons:${balloons.length} wall:${wall.length} memories:${memories.length} ${storySummary}`
 );
+
+if (skipped.length) {
+  console.warn(
+    `\n  !! ${skipped.length} photo(s) SKIPPED — browsers cannot display these formats:\n` +
+      skipped.map((f) => `     ${f}`).join('\n') +
+      `\n     Convert them to .jpg and they will appear automatically.\n`
+  );
+}

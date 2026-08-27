@@ -98,4 +98,16 @@ export const WALL_PHOTOS: string[] = [
   'assets/wall/35.jpg',
 ];
 
-export const MEMORY_PHOTOS: string[] = [];
+export const MEMORY_PHOTOS: string[] = [
+  'assets/memories/IMG_0001%20(1).jpg',
+  'assets/memories/IMG_0001.jpg',
+  'assets/memories/IMG_0021.jpg',
+  'assets/memories/IMG_0052.jpg',
+  'assets/memories/IMG_0195.jpg',
+  'assets/memories/IMG_1179.JPG',
+  'assets/memories/IMG_1284.JPG',
+  'assets/memories/IMG_1321.jpg',
+  'assets/memories/IMG_1388.jpg',
+  'assets/memories/IMG_9913.jpg',
+  'assets/memories/IMG_20250509_215508.jpg',
+];
