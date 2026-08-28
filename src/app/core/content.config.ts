@@ -112,7 +112,7 @@ export const BALLOONS = {
     'The way you get excited about the smallest things.',
     'The way you chup karao me when u lose a conversation or have nothing to say.',
     'Your terrible, wonderful, unstoppable energy.',
-    'Simply put: your chehakna is my most favourite thing about you.,
+    'Simply put: your chehakna is my most favourite thing about you.',
     'The way you daanto me, but only when i know its my fault and i m being scolded for that.',
     'Your devotion towards god is one of the purest thing about you',
     'The sincerity with which you do your duties.'
