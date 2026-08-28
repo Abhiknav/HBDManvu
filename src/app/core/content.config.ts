@@ -115,7 +115,11 @@ export const BALLOONS = {
     'Simply put: your chehakna is my most favourite thing about you.',
     'The way you daanto me, but only when i know its my fault and i m being scolded for that.',
     'Your devotion towards god is one of the purest thing about you',
-    'The sincerity with which you do your duties.'
+    'The sincerity with which you do your duties.',
+    'i love your voice, when you say hiiiii betu over call my world completly stops.',
+    'the way you wait for my how was your day to start telling your stories from the day',
+    'the way you rant about your day sometimes and tell all the funny stories',
+    'the way you come n complain to me when sir scolds you, sir ne daantaaaaaa with that music,it melts my heart.'
   ],
 };
 
