@@ -103,16 +103,19 @@ export const BALLOONS = {
    * without touching the other. Each popped balloon draws one of each.
    */
   messages: [
-    'The way you laugh at your own jokes before you finish telling them.',
-    'How you turn any ordinary day into something worth remembering.',
-    'Your voice is the first thing that makes a bad day feel survivable.',
-    'The way you care for people, even when no one’s watching.',
-    'Every ridiculous nickname you’ve ever answered to without complaint.',
-    'How stubborn you are — and how much I love that about you.',
+    'The way you make all my mornings so beautiful by sendind me your pictures.',
+    'Evrytime you get ready,seeing you my heart skips a beat.',
+    'Your kind, loving and caring nature.',
+    'The food you cook for me, makes me fall in love with you all over again.',
+    'The childish things you keep doing without being consious about what or whose around you.',
+    'you are phanny',
     'The way you get excited about the smallest things.',
-    'That you’re somehow more you every single year.',
+    'The way you chup karao me when u lose a conversation or have nothing to say.',
     'Your terrible, wonderful, unstoppable energy.',
-    'Simply put: you.',
+    'Simply put: your chehakna is my most favourite thing about you.,
+    'The way you daanto me, but only when i know its my fault and i m being scolded for that.',
+    'Your devotion towards god is one of the purest thing about you',
+    'The sincerity with which you do your duties.'
   ],
 };
 
