@@ -102,25 +102,31 @@ export const BALLOONS = {
    * so the two lists no longer have to be the same length — add either
    * without touching the other. Each popped balloon draws one of each.
    */
-  messages: [
-    'The way you make all my mornings so beautiful by sendind me your pictures.',
-    'Evrytime you get ready,seeing you my heart skips a beat.',
-    'Your kind, loving and caring nature.',
-    'The food you cook for me, makes me fall in love with you all over again.',
-    'The childish things you keep doing without being consious about what or whose around you.',
-    'you are phanny',
-    'The way you get excited about the smallest things.',
-    'The way you chup karao me when u lose a conversation or have nothing to say.',
-    'Your terrible, wonderful, unstoppable energy.',
-    'Simply put: your chehakna is my most favourite thing about you.',
-    'The way you daanto me, but only when i know its my fault and i m being scolded for that.',
-    'Your devotion towards god is one of the purest thing about you',
-    'The sincerity with which you do your duties.',
-    'i love your voice, when you say hiiiii betu over call my world completly stops.',
-    'the way you wait for my how was your day to start telling your stories from the day',
-    'the way you rant about your day sometimes and tell all the funny stories',
-    'the way you come n complain to me when sir scolds you, sir ne daantaaaaaa with that music,it melts my heart.'
-  ],
+ messages: [
+  'The way you make all my mornings so beautiful by sending me your pictures.',
+  'Every time you get ready, seeing you my heart skips a beat.',
+  'Your kind, loving and caring nature.',
+  'The food you cook for me, makes me fall in love with you all over again.',
+  'The childish things you keep doing without being conscious of what or who is around you.',
+  'You are effortlessly funny.',
+  'The way you get excited about the smallest things.',
+  'The way you chup karao me when u lose a conversation or have nothing to say.',
+  'Your terrible, wonderful, unstoppable energy.',
+  'Simply put: your chehakna is my most favourite thing about you.',
+  'The way you daanto me, but only when I know it\'s my fault and I\'m being scolded for that.',
+  'Your devotion towards god is one of the purest things about you.',
+  'The sincerity with which you do your duties.',
+  'I love your voice, when you say hiiiii betu over call my world completely stops.',
+  'The way you wait for my "how was your day" to start telling your stories from the day.',
+  'The way you rant about your day sometimes and tell all the funny stories.',
+  'The way you come and complain to me when sir scolds you, "sir ne daantaaaaaa" with that music, it melts my heart.',
+  'You like sleeping alone but still you let me touch and hold you cause I like doing that.',
+  'I just love your voice.',
+  'Your dressing sense, mashaallah.',
+  'The way aap gaal phula lete ho aur honth nikal lete ho, whenever u need pampering and love.',
+  'The way u try to change your behaviour so easily without questioning if something bothers me.',
+  'The way you try to calm me down and patiently accept all my accusations whenever I overthink and overreact.',
+],
 };
 
 export const WISH_STARS = {
