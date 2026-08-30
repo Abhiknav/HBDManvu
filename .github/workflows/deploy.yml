@@ -1,0 +1,60 @@
+# Builds the site and publishes it whenever main changes.
+#
+# main holds the source; the live site is served from the gh-pages branch,
+# which holds the built output. Without this, editing content on main (from
+# a phone, or through the GitHub web editor) changed the source but nothing
+# rebuilt, so the site never moved. Now any push to main — from anywhere —
+# rebuilds and republishes on its own.
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  # lets the site be republished by hand from the Actions tab without
+  # having to make a commit first
+  workflow_dispatch:
+
+# required so the job can push the built output to the gh-pages branch
+permissions:
+  contents: write
+
+# if several commits land quickly, finish the newest and drop the rest
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # resizes photos, regenerates the photo manifest, builds with the
+      # /HBDManvu/ base href, then writes 404.html and .nojekyll
+      - name: Build site
+        run: npm run build:ghpages
+
+      - name: Publish to gh-pages
+        working-directory: dist/manvi-birthday/browser
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git init -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Deploy ${GITHUB_SHA::7}"
+          git push --force \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            gh-pages
