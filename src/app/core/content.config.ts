@@ -191,14 +191,14 @@ export const LOVE_LETTER = {
 };
 
 export const SCRATCH = {
-  eyebrow: 'One more thing',
+  eyebrow: 'Oh one last thing, I nearly forgot',
   title: 'Scratch This Off',
   subtitle: 'Use your finger or cursor — there’s something underneath.',
   revealPhoto: 'assets/scratch/reveal.jpg',
   revealMessage: 'Replace this with the one thing you most want her to know — the real, unguarded one. This is the payoff moment, so make it count.',
 };
 
-// Shown at the very end — the site is opened at the close of her birthday
+// Shown just before the scratch card — the site is opened at the close of her birthday
 // itself, so this is a celebration of the day that already happened, not
 // a countdown to one still coming.
 export const FINALE = {

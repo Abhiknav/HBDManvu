@@ -36,8 +36,8 @@ export class ExperienceComponent implements AfterViewInit, OnDestroy {
     { id: 'memories', label: 'Memories' },
     { id: 'wishes', label: 'Wishes' },
     { id: 'letter', label: 'Letter' },
-    { id: 'scratch', label: 'Surprise' },
     { id: 'finale', label: 'Tonight' },
+    { id: 'scratch', label: 'Surprise' },
   ];
 
   activeId = 'welcome';
