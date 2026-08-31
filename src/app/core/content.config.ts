@@ -140,9 +140,9 @@ export const WISH_STARS = {
   tallyLabel: 'wishes found',
   allSentLabel: 'You found every one. That’s all of them — and I’ll keep making more.',
   /*
-   * One wish per star, and the stars are found in whatever order she
-   * clicks them — so each wish has to stand on its own rather than refer
-   * back to the one before it.
+   * One wish per star, revealed in this order however the stars are
+   * clicked — the first star found shows the first wish, and so on. So a
+   * wish may safely build on the one above it.
    */
   wishes: [
     'May you get all the success that you deserve — and by success I mean lots of health, wealth, happiness and prosperity.',

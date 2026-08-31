@@ -96,10 +96,14 @@ export class WishStarsComponent implements OnDestroy {
 
     clearTimeout(this.wishTimer);
     this.wishTimer = setTimeout(() => {
+      // The wishes are read in the order they are written, not in the order
+      // the stars happen to be clicked: the nth star found always shows the
+      // nth wish. Which star she picks decides only where the bubble opens.
+      const wish = this.content.wishes[this.wishesFound];
       star.found = true;
       this.wishesFound++;
       this.activeWish = {
-        text: this.content.wishes[star.id],
+        text: wish,
         // anchored on the star, then nudged back inside the sky on the
         // next tick if the wish is long enough to hang off an edge
         left: star.left,
