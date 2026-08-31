@@ -13,6 +13,7 @@
     "build:ghpages": "npm run photos && ng build --base-href /HBDManvu/ && node scripts/prepare-ghpages.js",
     "deploy": "npm run build:ghpages && gh-pages -d dist/manvi-birthday/browser --dotfiles",
     "photos:optimize": "node scripts/optimize-photos.js",
+    "qr": "node scripts/generate-qr.js",
     "photos": "npm run photos:optimize && npm run photos:manifest"
   },
   "private": true,
@@ -43,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "qrcode": "^1.5.4",
     "sharp": "^0.35.4",
     "typescript": "~5.3.2"
   },

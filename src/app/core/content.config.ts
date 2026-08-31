@@ -239,9 +239,9 @@ export const MEMORY_CAPTIONS: Array<{ caption: string; date?: string }> = [
 export const LOVE_LETTER = {
   salutation: 'My dearest Betu,',
   paragraphs: [
-    'Replace this paragraph with the first thing you want her to read — how this year with her felt, or what you’re most grateful for.',
-    'Add a second paragraph here — an inside joke, a memory, or something only the two of you would understand.',
-    'And a last one to close it out — a wish for the year ahead, or simply why she means so much to you.',
+    'There is a short list of things the world quietly agreed are better handwritten than typed, and a letter sits right at the top of it. Which raises an awkward question, and I think you should put it to Abhinav directly: why has that man never once written you one by hand? Or — has he?',
+    'In his defence, and I say this as a completely impartial third party who happens to be him, his handwriting has been described by teachers, by doctors, and by at least one bank as a security feature. Typed, you can at least tell what he means. By hand, you would be taking it entirely on faith.',
+    'So treat this as the draft. Somewhere there is a version of it on real paper, in real ink, slower and messier and worth the wait. Until it reaches you, this one says exactly the same thing — and says it in a font you can actually read.',
   ],
   signOff: 'Yours, always',
   signature: 'Me',
@@ -253,6 +253,17 @@ export const SCRATCH = {
   subtitle: 'Use your finger or cursor — there’s something underneath.',
   revealPhoto: 'assets/scratch/reveal.jpg',
   revealMessage: 'Replace this with the one thing you most want her to know — the real, unguarded one. This is the payoff moment, so make it count.',
+  /*
+   * The gift under the scratch card: a QR to her portfolio, with a plain
+   * link for anyone who would rather not fetch a second phone to scan a
+   * screen. The whole block hides itself while `portfolioUrl` is empty,
+   * so a missing link never ships as a dead QR — set the URL and
+   * regenerate the code with scripts/generate-qr.js.
+   */
+  giftLine: 'A virtual gift — not for my Betu, but for the career-oriented Manvi Badyal.',
+  portfolioUrl: '',
+  portfolioQr: 'assets/scratch/portfolio-qr.svg',
+  portfolioLinkLabel: 'Scanning is too much trouble? Click this link for now',
 };
 
 // Shown just before the scratch card — the site is opened at the close of her birthday
@@ -261,7 +272,7 @@ export const SCRATCH = {
 export const FINALE = {
   eyebrow: 'And so, we reach tonight',
   message: [
-    'Happy Birthday, Manvi.',
+    'Happy Bday, Manvu.',
     'Every year adds another reason I’m glad you exist.',
     'Here’s to all of it — the version of you today, and whoever you become next.',
   ],

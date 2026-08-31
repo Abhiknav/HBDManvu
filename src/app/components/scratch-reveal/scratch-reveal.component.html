@@ -20,6 +20,16 @@
         </div>
       </div>
       <p class="message">{{ content.revealMessage }}</p>
+
+      <div class="gift" *ngIf="content.portfolioUrl">
+        <p class="gift-line">{{ content.giftLine }}</p>
+        <a class="qr" [href]="content.portfolioUrl" target="_blank" rel="noopener noreferrer">
+          <img [src]="content.portfolioQr" alt="QR code linking to Manvi’s portfolio" />
+        </a>
+        <a class="gift-link" [href]="content.portfolioUrl" target="_blank" rel="noopener noreferrer">
+          {{ content.portfolioLinkLabel }}
+        </a>
+      </div>
     </div>
 
     <canvas
