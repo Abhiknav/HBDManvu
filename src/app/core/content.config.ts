@@ -147,7 +147,7 @@ export const WISH_STARS = {
   wishes: [
     'May you get all the success that you deserve — and by success I mean lots of health, wealth, happiness and prosperity.',
     'May you make me do aiyaashi with your money — buy me really, really expensive things, take me on amazing holidays, and udaao all your hard-earned money on me.',
-    'May you get to do the same for your parents — the expensive things, the holidays, all of it 😛',
+    'May you get to do the same for your parents 😛',
     'May you get to do the same for my parents too 😜',
     'May you get the most loving, caring and understanding boyfriend, husband, saas-sasur and sasural.',
     'May you find everything you are seeking, spiritually.',
