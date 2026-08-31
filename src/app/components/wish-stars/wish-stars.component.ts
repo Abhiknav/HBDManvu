@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, inject } from '@angular/core';
 import confetti from 'canvas-confetti';
 import { WISH_STARS } from '../../core/content.config';
 import { RevealDirective } from '../../shared/reveal.directive';
@@ -39,16 +39,20 @@ export class WishStarsComponent implements OnDestroy {
   missed = false;
   activeWish: { text: string; left: number; top: number; below: boolean } | null = null;
 
+  @ViewChild('sky') private skyRef?: ElementRef<HTMLElement>;
+
   private wishTimer?: ReturnType<typeof setTimeout>;
+  private clampTimer?: ReturnType<typeof setTimeout>;
   private missTimer?: ReturnType<typeof setTimeout>;
   private hintTimer?: ReturnType<typeof setTimeout>;
   private rippleId = 0;
   ripples: Ripple[] = [];
 
   // scattered across the full sky, kept off the extreme edges so a wish
-  // bubble anchored to any of them still has room to render
-  // inset far enough from the edges that a wish bubble anchored dead-centre
-  // on any star still fits without needing to be nudged sideways
+  // bubble anchored to any of them has room to render. The inset alone is
+  // not enough on a narrow screen — a bubble is up to 70vw wide there, so
+  // one centred on a star at 16% still hangs off the edge — which is what
+  // clampBubble below corrects once the real width is known.
   stars: WishStar[] = this.content.wishes.map((_, i) => ({
     id: i,
     left: 16 + ((i * 37 + (i % 3) * 11) % 68),
@@ -96,12 +100,14 @@ export class WishStarsComponent implements OnDestroy {
       this.wishesFound++;
       this.activeWish = {
         text: this.content.wishes[star.id],
-        // anchored exactly on the star; stars are already inset so this
-        // never needs clamping, which is what used to shift it off-target
+        // anchored on the star, then nudged back inside the sky on the
+        // next tick if the wish is long enough to hang off an edge
         left: star.left,
         top: star.top,
         below: star.top < 26,
       };
+      clearTimeout(this.clampTimer);
+      this.clampTimer = setTimeout(() => this.clampBubble());
 
       if (this.allWishesFound) {
         confetti({
@@ -115,6 +121,35 @@ export class WishStarsComponent implements OnDestroy {
     }, BUBBLE_DELAY);
 
     setTimeout(() => (star.shooting = false), SHOOT_DURATION);
+  }
+
+  /**
+   * Slides a bubble back inside the sky if it overhangs an edge.
+   *
+   * The sky clips its overflow, so an overhanging bubble simply loses the
+   * text that falls outside it. Bubble width depends on the wish and on
+   * the viewport (up to 70vw), so the fit can only be judged once it has
+   * rendered — hence the measure-then-adjust rather than a fixed inset.
+   */
+  private clampBubble(): void {
+    const sky = this.skyRef?.nativeElement;
+    const bubble = sky?.querySelector('.wish-bubble') as HTMLElement | null;
+    if (!sky || !bubble || !this.activeWish) return;
+
+    // offsetWidth, not getBoundingClientRect: the bubble animates in from
+    // scale 0.9, and a measurement taken mid-animation reports it ~10%
+    // narrower than it settles at — enough to leave an edge still clipped
+    const skyWidth = sky.offsetWidth;
+    const halfBubble = bubble.offsetWidth / 2;
+    const margin = 10;
+    const min = halfBubble + margin;
+    const max = skyWidth - halfBubble - margin;
+
+    // wider than the sky itself: centred is as good as it gets
+    const wanted = (this.activeWish.left / 100) * skyWidth;
+    const fitted = min > max ? skyWidth / 2 : Math.min(Math.max(wanted, min), max);
+
+    this.activeWish = { ...this.activeWish, left: (fitted / skyWidth) * 100 };
   }
 
   /** clicking empty sky: gentle "keep looking" feedback, not a penalty */
@@ -147,6 +182,7 @@ export class WishStarsComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     clearTimeout(this.wishTimer);
+    clearTimeout(this.clampTimer);
     clearTimeout(this.missTimer);
     clearTimeout(this.hintTimer);
   }

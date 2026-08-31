@@ -130,22 +130,29 @@ export const BALLOONS = {
 };
 
 export const WISH_STARS = {
-  eyebrow: 'What I wish for you',
+  /* Long for an eyebrow, so the section restyles it as a sentence rather
+     than the tracked-out uppercase label used everywhere else. */
+  eyebrow: '“Make a wish” is overrated — and since I get more excited about your birthday than you do, I get to make the wishes.',
   title: 'A Sky Full of Wishes',
   subtitle: 'Somewhere up there, a few stars are brighter than the rest. Each one is holding a wish I made for you — find them all.',
   hintLabel: 'Show me where',
   missLabel: 'not that one — keep looking',
   tallyLabel: 'wishes found',
   allSentLabel: 'You found every one. That’s all of them — and I’ll keep making more.',
+  /*
+   * One wish per star, and the stars are found in whatever order she
+   * clicks them — so each wish has to stand on its own rather than refer
+   * back to the one before it.
+   */
   wishes: [
-    'A year where you finally rest as much as you give.',
-    'Every small, stupid, wonderful plan you make actually works out.',
-    'People who deserve your energy, and enough sense to drop the ones who don’t.',
-    'More reasons to laugh the way you do when you forget anyone’s watching.',
-    'A little more softness for yourself, the kind you give everyone else freely.',
-    'Every dream you’re too shy to say out loud, out loud, and coming true.',
-    'A year that surprises you in the good way, for once.',
-    'To always know how loved you are, even on the days it’s hard to feel.',
+    'May you get all the success that you deserve — and by success I mean lots of health, wealth, happiness and prosperity.',
+    'May you make me do aiyaashi with your money — buy me really, really expensive things, take me on amazing holidays, and udaao all your hard-earned money on me.',
+    'May you get to do the same for your parents — the expensive things, the holidays, all of it 😛',
+    'May you get to do the same for my parents too 😜',
+    'May you get the most loving, caring and understanding boyfriend, husband, saas-sasur and sasural.',
+    'May you find everything you are seeking, spiritually.',
+    'May you get married soon — to me.',
+    'And may we live happily ever after.',
   ],
 };
 

@@ -14,6 +14,21 @@
   max-width: 620px;
   padding: 0 1.5rem;
 
+  /* This section's eyebrow is a whole sentence, not a two-word label. The
+     shared style sets it in uppercase at 0.32em tracking, which turns a
+     line this long into a wall of spaced-out capitals — so here it reads
+     as the aside it is. */
+  .section-eyebrow {
+    text-transform: none;
+    letter-spacing: 0.01em;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: var(--gold-glow);
+    opacity: 0.85;
+  }
+
   h2 {
     color: var(--gold-glow);
     font-size: clamp(2rem, 4.6vw, 3rem);

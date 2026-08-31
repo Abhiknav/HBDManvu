@@ -6,7 +6,7 @@
     <p class="subtitle">{{ content.subtitle }}</p>
   </div>
 
-  <div class="sky" appReveal (click)="onSkyClick($event)">
+  <div class="sky" #sky appReveal (click)="onSkyClick($event)">
     <span
       class="twinkle"
       *ngFor="let t of twinkles"
