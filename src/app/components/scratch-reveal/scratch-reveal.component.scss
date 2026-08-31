@@ -48,37 +48,6 @@
   text-align: center;
 }
 
-.photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: linear-gradient(140deg, var(--bg-warm), var(--rose-gold));
-  flex-shrink: 0;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-.placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cream);
-}
-
-.message {
-  color: var(--ink);
-  font-size: 1.15rem;
-  font-style: italic;
-  max-width: 32ch;
-}
-
 .scratch-canvas {
   position: absolute;
   inset: 0;
@@ -98,9 +67,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0.7rem;
-  margin-top: 0.4rem;
-  padding-top: 1.1rem;
-  border-top: 1px solid var(--line);
   width: 100%;
 }
 

@@ -240,7 +240,7 @@ export const LOVE_LETTER = {
   salutation: 'My dearest Betu,',
   paragraphs: [
     'A few things are simply better handwritten than typed, and a letter is top of that list. So you are well within your rights to ask Abhinav why this one turned up as pixels.',
-    'And then to remember the ones that didn’t. Think of this as the impatient version — it reached you the same day I thought of it. The slower kind is still coming, as always.',
+    'Or — do you want to check with him once before we move on? Ask whether he has something handwritten for you tucked away somewhere.',
   ],
   signOff: 'Yours, always',
   signature: 'Me',
@@ -250,8 +250,6 @@ export const SCRATCH = {
   eyebrow: 'Oh one last thing, I nearly forgot',
   title: 'Scratch This Off',
   subtitle: 'Use your finger or cursor — there’s something underneath.',
-  revealPhoto: 'assets/scratch/reveal.jpg',
-  revealMessage: 'Replace this with the one thing you most want her to know — the real, unguarded one. This is the payoff moment, so make it count.',
   /*
    * The gift under the scratch card: a QR to her portfolio, with a plain
    * link for anyone who would rather not fetch a second phone to scan a

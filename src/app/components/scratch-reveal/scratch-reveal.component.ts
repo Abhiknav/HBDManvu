@@ -17,7 +17,6 @@ const REVEAL_THRESHOLD = 0.5;
 export class ScratchRevealComponent implements AfterViewInit, OnDestroy {
   content = SCRATCH;
   revealed = false;
-  photoBroken = false;
 
   @ViewChild('canvasEl') canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('wrap') wrapRef!: ElementRef<HTMLElement>;
@@ -120,10 +119,6 @@ export class ScratchRevealComponent implements AfterViewInit, OnDestroy {
       colors: ['#f7c948', '#f0508a', '#17a8a0', '#9b5de5'],
       origin: { y: 0.6 },
     });
-  }
-
-  onPhotoError(): void {
-    this.photoBroken = true;
   }
 
   ngOnDestroy(): void {
