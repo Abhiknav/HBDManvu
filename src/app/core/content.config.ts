@@ -170,13 +170,63 @@ export type Memory = {
  *
  * Add or remove captions freely. Extra photos simply appear without one,
  * and extra captions are ignored, so the two lists never have to match.
+ *
+ * A \n inside a caption starts a new line, which is how the couplets and
+ * verses below keep their shape instead of reflowing into a paragraph.
  */
 export const MEMORY_CAPTIONS: Array<{ caption: string; date?: string }> = [
-  { caption: 'Replace me with a photo that makes you smile.' },
-  { caption: 'A moment worth keeping forever.' },
-  { caption: 'The one where we couldn’t stop laughing.' },
-  { caption: 'A quiet moment that meant everything.' },
-  { caption: 'One more, just because.' },
+  {
+    caption:
+      'अच्छा ख़ासा बैठे बैठे गुम हो जाता हूँ\nअब मैं अक्सर मैं नहीं रहता, तुम हो जाता हूँ',
+  },
+  {
+    caption:
+      'तू सूरज की धूप है\nमैं सर्दी की हूँ सुबह\nमेरे हर इक मर्ज़ की तू है दवा\nमैं जब भी देख लूँ\nतुझे करीब से\nलगे के मिल गया है मेरा खुदा',
+  },
+  {
+    caption:
+      'Have you ever felt so much in love — so much that, forget about words, you can’t even find one good song to express what you feel?\nYes. I’m there. Right there.',
+  },
+  {
+    caption:
+      'Baje hain mere mann ke taar, sun le\nSaje hain mere dil ke dwaar, sun le\nKi ho gaya hai tumse pyaar, sun le\nPyaar bhi beshumaar, sun le',
+  },
+  {
+    caption: 'I love you more than I love eating.\nAnd you know how much I love eating.',
+  },
+  {
+    caption:
+      'अज़ीज़ इतना ही रक्खो कि जी सँभल जाए\nअब इस क़दर भी न चाहो कि दम निकल जाए\n— but I feel I’m almost there 🫠',
+  },
+  {
+    caption: 'You. Always you. Period.',
+  },
+  {
+    caption: 'और क्या देखने को बाक़ी है\nआप से दिल लगा के देख लिया',
+  },
+  {
+    caption:
+      'When I’m in Bangalore…\nAb to mere ghar k tamam darwaze bhi\nTumse krte hain pyar, aa jao',
+  },
+  {
+    caption: 'Home isn’t a place anymore.\nIt’s a person. It’s you 🫠',
+  },
+  {
+    caption: 'I had a whole speech ready.\nThen you looked up, and I forgot every word of it.',
+  },
+  {
+    caption: 'तुम्हें सोचना कोई काम नहीं लगता\nऔर मैं दिन भर यही काम करता हूँ',
+  },
+  {
+    caption:
+      'Sab kehte hain waqt sab kuch badal deta hai —\ntum ho ki har baar pehli baar lagti ho',
+  },
+  {
+    caption: 'A person gets a handful of things right in one lifetime.\nYou are all of mine.',
+  },
+  {
+    caption: 'कोई पूछे ज़िंदगी से क्या चाहिए\nतो बस इतना — तुम, और थोड़ा और वक़्त',
+  },
 ];
 
 export const LOVE_LETTER = {

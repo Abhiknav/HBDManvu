@@ -125,18 +125,29 @@
 
 .caption-readout {
   position: absolute;
-  bottom: 4rem;
+  bottom: 3.4rem;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  max-width: 380px;
+  /* wide enough to hold a line of verse in one piece — at the old 380px a
+     couplet broke mid-phrase and each caption grew a line or two taller
+     than it needed to be, which is what pushed it into the wheel */
+  width: min(640px, 92vw);
   padding: 0 1.5rem;
 }
 
 .caption {
   color: var(--ink);
-  font-size: 1.25rem;
+  /* several captions run to five or six lines, so this scales with the
+     viewport and sits tighter than body copy's 1.7: a six-line verse at
+     the old fixed 1.25rem/1.7 was ~200px tall and collided with the
+     focused card above it on shorter screens */
+  font-size: clamp(0.95rem, 1.9vh, 1.2rem);
+  line-height: 1.45;
   font-style: italic;
+  /* keeps the line breaks each caption is written with, so a couplet
+     stays a couplet rather than reflowing into a paragraph */
+  white-space: pre-line;
 }
 
 .date {
@@ -162,16 +173,56 @@
   opacity: 0.55;
 }
 
-@media (max-width: 640px) {
+/* Short screens, at any width. The captions are verses — the longest runs
+   to six lines, about 130px — and the wheel used to sit low enough that on
+   a 620px-tall window the focused card and the caption ran into each
+   other. Lifting the whole wheel (ring, pivot and arc together, so the
+   cards still ride the dashed circle) buys that band back.
+   Kept above the phone rule below so a short phone gets the phone values. */
+@media (max-height: 700px) {
   .wheel-section {
-    --ring-size: 64vh;
-    --ring-bottom: -22vh;
-    --arc-radius: 32vh;
-    --pivot-bottom: 10vh;
+    /* ring centre = --ring-bottom + --ring-size / 2, and has to equal
+       --pivot-bottom; --arc-radius is the ring's radius */
+    --ring-size: 66vh;
+    --ring-bottom: -15vh;
+    --arc-radius: 33vh;
+    --pivot-bottom: 18vh;
   }
 
   .card {
-    /* narrower arc radius on phones, so the card scales down with it */
-    --card-w: clamp(120px, 26vh, 190px);
+    --card-w: clamp(130px, 26vh, 210px);
+  }
+
+  .caption {
+    /* a six-line verse has to fit between the card and the scroll hint on
+       a screen this short, so the floor drops below the 0.95rem used
+       elsewhere and the lines sit a little tighter */
+    font-size: clamp(0.82rem, 1.9vh, 1.2rem);
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 640px) {
+  .wheel-section {
+    --ring-size: 58vh;
+    --ring-bottom: -13vh;
+    --arc-radius: 29vh;
+    --pivot-bottom: 16vh;
+  }
+
+  .card {
+    /* narrower arc radius on phones, so the card scales down with it.
+       One angular step still clears the card's width:
+       chord = 2 * 29vh * sin(56deg / 2) = 27vh, wider than the card. */
+    --card-w: clamp(110px, 23vh, 170px);
+  }
+
+  .caption-readout {
+    bottom: 3.7rem;
+  }
+
+  .scroll-hint {
+    /* pulled down to give the taller captions above it room */
+    bottom: 0.6rem;
   }
 }

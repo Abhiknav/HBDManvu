@@ -31,7 +31,9 @@
 
   --font-script: 'Great Vibes', cursive;
   --font-display: 'Playfair Display', serif;
-  --font-body: 'Cormorant Garamond', serif;
+  /* Cormorant carries no Devanagari, so the Hindi captions fall through to
+     Noto Serif Devanagari rather than the browser's default sans */
+  --font-body: 'Cormorant Garamond', 'Noto Serif Devanagari', serif;
   --font-ui: 'Poppins', sans-serif;
 
   --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
