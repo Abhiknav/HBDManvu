@@ -239,9 +239,8 @@ export const MEMORY_CAPTIONS: Array<{ caption: string; date?: string }> = [
 export const LOVE_LETTER = {
   salutation: 'My dearest Betu,',
   paragraphs: [
-    'There is a short list of things the world quietly agreed are better handwritten than typed, and a letter sits right at the top of it. Which raises an awkward question, and I think you should put it to Abhinav directly: why has that man never once written you one by hand? Or — has he?',
-    'In his defence, and I say this as a completely impartial third party who happens to be him, his handwriting has been described by teachers, by doctors, and by at least one bank as a security feature. Typed, you can at least tell what he means. By hand, you would be taking it entirely on faith.',
-    'So treat this as the draft. Somewhere there is a version of it on real paper, in real ink, slower and messier and worth the wait. Until it reaches you, this one says exactly the same thing — and says it in a font you can actually read.',
+    'A few things are simply better handwritten than typed, and a letter is top of that list. So you are well within your rights to ask Abhinav why this one turned up as pixels.',
+    'And then to remember the ones that didn’t. Think of this as the impatient version — it reached you the same day I thought of it. The slower kind is still coming, as always.',
   ],
   signOff: 'Yours, always',
   signature: 'Me',
@@ -261,7 +260,7 @@ export const SCRATCH = {
    * regenerate the code with scripts/generate-qr.js.
    */
   giftLine: 'A virtual gift — not for my Betu, but for the career-oriented Manvi Badyal.',
-  portfolioUrl: '',
+  portfolioUrl: 'https://abhiknav.github.io/ManviBadyal/',
   portfolioQr: 'assets/scratch/portfolio-qr.svg',
   portfolioLinkLabel: 'Scanning is too much trouble? Click this link for now',
 };
